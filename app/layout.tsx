@@ -92,7 +92,7 @@
 //   publisher: "QuickToolKit",
 
 
-  
+
 //   // Canonical URLs prevent duplicate content indexing issues
 //   alternates: {
 //     canonical: "/",
@@ -171,6 +171,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next"
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -264,6 +265,28 @@ export const metadata: Metadata = {
   },
 };
 
+// export default function RootLayout({
+//   children,
+// }: Readonly<{
+//   children: React.ReactNode;
+// }>) {
+//   return (
+//     <html
+//       lang="en"
+//       className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
+//     >
+//       <body className="min-h-screen flex flex-col bg-gray-50 text-gray-900 overflow-x-hidden">
+//         <div className="flex-1 w-full">
+//           {children}
+//         </div>
+
+//         <Analytics />
+//         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5124781684116478" crossorigin="anonymous"></script>
+//       </body>
+//     </html>
+//   );
+// }
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -278,7 +301,17 @@ export default function RootLayout({
         <div className="flex-1 w-full">
           {children}
         </div>
+
+        {/* Vercel Analytics */}
         <Analytics />
+
+        {/* Google AdSense */}
+        <Script
+          async
+          strategy="afterInteractive"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5124781684116478"
+          crossOrigin="anonymous"
+        />
       </body>
     </html>
   );
