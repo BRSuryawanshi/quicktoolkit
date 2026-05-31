@@ -306,12 +306,8 @@ export default function RootLayout({
         <Analytics />
 
         {/* Google AdSense */}
-        <Script
-          async
-          strategy="afterInteractive"
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5124781684116478"
-          crossOrigin="anonymous"
-        />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5124781684116478"
+          crossOrigin="anonymous"></script>
       </body>
     </html>
   );
